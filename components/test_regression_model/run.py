@@ -32,6 +32,8 @@ def go(args):
     # Read test dataset
     X_test = pd.read_csv(test_dataset_path)
     y_test = X_test.pop("price")
+    import platform
+    logger.info(f"The platform version is {platform.python_version()}")
 
     logger.info("Loading model and performing inference on test set")
     sk_pipe = mlflow.sklearn.load_model(model_local_path)
@@ -51,7 +53,6 @@ def go(args):
 
 
 if __name__ == "__main__":
-
     parser = argparse.ArgumentParser(description="Test the provided model against the test dataset")
 
     parser.add_argument(
